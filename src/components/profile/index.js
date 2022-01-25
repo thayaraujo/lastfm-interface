@@ -6,24 +6,26 @@ const Profile = () => {
     const { lastfmState } = useLastfm()
     return (
         <S.Wrapper>
-            <S.WrapperImage src={lastfmState.user.avatar}
-            alt= "User's avatar" />
-
+            <S.WrapperImage src={lastfmState.user.image}
+                alt="User's avatar" />
             <S.WrapperInfoUser>
                 <div>
-                    <h1>{lastfmState.user.name}</h1>
-
-                    <S.WrapperUsername>
+                    <h1>{lastfmState.user.realname}</h1>
+                    <S.WrapperUserGeneric>
                         <h3>Username: </h3>
-                        <a href={lastfmState.user.html_url} 
-                        target="_blank" 
-                        rel="noreferrer"
+                        <a href={lastfmState.user.url}
+                            target="_blank"
+                            rel="noreferrer"
                         >
-                        {lastfmState.user.login}
+                            {lastfmState.user.login}
                         </a>
-                    </S.WrapperUsername>
+                    </S.WrapperUserGeneric>
                 </div>
                 <S.WrapperStatusCount>
+                    <div>
+                        <h3>Scrobbles</h3>
+                        <span>{lastfmState.user.playcount}</span>
+                    </div>
                     <div>
                         <h4>Followers</h4>
                         <span>{lastfmState.user.followers}</span>

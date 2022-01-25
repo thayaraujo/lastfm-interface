@@ -5,7 +5,7 @@ export const Wrapper = styled.div `
     align-items: flex-start;
 `;
 
-export const WrapperUsername = styled.div `
+export const WrapperUserGeneric = styled.div `
     display: flex;
     align-items: center;
     margin-top: 8px;
@@ -44,7 +44,6 @@ export const WrapperInfoUser = styled.div `
         font-weight: bold;
     }
 `;
-
 
 export const WrapperStatusCount = styled.div `
     display: flex;

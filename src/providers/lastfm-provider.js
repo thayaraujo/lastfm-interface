@@ -13,11 +13,13 @@ const LastfmProvider = ({ children }) => {
         hasUser: false,
         loading: false,
         user: {
+            realName: undefined,
             id: undefined,
-            avatar: undefined,
+            image: undefined,
             login: undefined,
             name: undefined,
             url: undefined,
+            scrobbles: 0,
             followers: 0,
             following: 0,
             topArtists: undefined,
@@ -35,16 +37,19 @@ const LastfmProvider = ({ children }) => {
             loading: !prevState.loading,
         }));
 
-        api.get(`user/${username}`).then(({ data }) => {
+        api.get(`https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${username}&api_key=affcb81955001a30878737181e4e7e35/`).then(({ data }) => {
+            console.log("data: " + JSON.stringify(data));
             setLastfmState((prevState) => ({
                 ...prevState,
                 hasUser: true,
                 user: {
+                    realName: data.realname,
                     id: data.id,
-                    avatar: data.avatar_url,
+                    image: data.image,
                     login: data.login,
                     name: data.name,
-                    html_url: data.html_url,
+                    url: data.url,
+                    scrobbles: data.playcount,
                     followers: data.followers,
                     following: data.following,
                     topArtists: data.topArtists,
@@ -64,24 +69,24 @@ const LastfmProvider = ({ children }) => {
 
     const getUserArtists = (username) => {
         api.get(`user/${username}/artists`).then(({ data }) => {
-          console.log("data: " + JSON.stringify(data));
-          setLastfmState((prevState) => ({
-            ...prevState,
-            artists: data,
-          }));
+            console.log("data: " + JSON.stringify(data));
+            setLastfmState((prevState) => ({
+                ...prevState,
+                artists: data,
+            }));
         });
-      };
-    
-      const getUserAlbums = (username) => {
-          api.get(`user/${username}/2.0/?method=user.gettopalbums&user=rj&api_key=affcb81955001a30878737181e4e7e35&format=json`)
-        .then(({ data }) => {
-          console.log("data: " + JSON.stringify(data));
-          setLastfmState((prevState) => ({
-            ...prevState,
-            albums: data,
-          }));
-        });
-      };
+    };
+
+    const getUserAlbums = (username) => {
+        api.get(`user/${username}/2.0/?method=user.gettopalbums&user=rj&api_key=affcb81955001a30878737181e4e7e35&format=json`)
+            .then(({ data }) => {
+                console.log("data: " + JSON.stringify(data));
+                setLastfmState((prevState) => ({
+                    ...prevState,
+                    albums: data,
+                }));
+            });
+    };
 
     const contextValue = {
         lastfmState,

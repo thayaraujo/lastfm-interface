@@ -1,14 +1,17 @@
 import React from 'react';
-
+import * as S from './styled';
 
 const ArtistsItem = ({ name, linkToItem, fullName }) => {
   return (
-      <div>
-          <h2>{ name }</h2>
-          <h4>full name:</h4>
-          <a href={linkToItem} target="_blank" rel="noreferrer">{fullName}</a>
-          
-      </div>
+    <S.Wrapper>
+      <S.WrapperTitle>{name}</S.WrapperTitle>
+      <S.WrapperFullName>full name:</S.WrapperFullName>
+      <S.WrapperLink href={linkToItem}
+        target="_blank"
+        rel="noreferrer">
+        {fullName}
+      </S.WrapperLink>
+    </S.Wrapper>
   )
 }
 
