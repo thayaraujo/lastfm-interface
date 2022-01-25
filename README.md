@@ -1,3 +1,14 @@
+## Projeto para estudo - Interface API Last.Fm
+
+Projeto criado com base no projeto de Matheus Benites "criando um front-end totalmente componentizado na prática com ReactJS", que utilizou a interface do Github API.
+Para colocar em prática os assuntos estudados utilizei a API do Last.FM, uma rede social de música.
+
+Repositório utilizado como base na aula: https://github.com/benits/github-api-interface
+
+Atividade do Bootcamp Eduzz Fullstack Developer #2
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
