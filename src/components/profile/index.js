@@ -13,42 +13,35 @@ const Profile = () => {
                     <h1>{lastfmState.user.realname}</h1>
                     <S.WrapperUserGeneric>
                         <h3>Username: </h3>
-                        <a href={lastfmState.user.url}
+                        <a href={lastfmState.user.name}
                             target="_blank"
                             rel="noreferrer"
                         >
-                            {lastfmState.user.login}
+                            {lastfmState.user.name}
                         </a>
+                    </S.WrapperUserGeneric>
+                    <S.WrapperUserGeneric>
+                        <h3>Country:</h3>
+                        <span>{lastfmState.user.country}</span>
+                    </S.WrapperUserGeneric>
+                    <S.WrapperUserGeneric>
+                        <h3>Last.fm profile:</h3>
+                        <span>{lastfmState.user.url}</span>
                     </S.WrapperUserGeneric>
                 </div>
                 <S.WrapperStatusCount>
                     <div>
-                        <h3>Scrobbles</h3>
+                        <h4>Scrobbles</h4>
                         <span>{lastfmState.user.playcount}</span>
                     </div>
                     <div>
-                        <h4>Followers</h4>
-                        <span>{lastfmState.user.followers}</span>
-                    </div>
-                    <div>
-                        <h4>Following</h4>
-                        <span>{lastfmState.user.following}</span>
-                    </div>
-                    <div>
+
                         <h4>Loved Tracks</h4>
                         <span>{lastfmState.user.lovedTracks}</span>
                     </div>
                     <div>
                         <h4>Playlists</h4>
                         <span>{lastfmState.user.playlists}</span>
-                    </div>
-                    <div>
-                        <h4>Top Artists</h4>
-                        <span>{lastfmState.user.topArtists}</span>
-                    </div>
-                    <div>
-                        <h4>Top Albums</h4>
-                        <span>{lastfmState.user.topAlbums}</span>
                     </div>
                 </S.WrapperStatusCount>
             </S.WrapperInfoUser>

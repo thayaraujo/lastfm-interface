@@ -4,19 +4,19 @@ import ArtistsItem from '../artists-item';
 import * as S from './styled';
 
 const Artists = () => {
-    const { lastfmState, getUserArtists, getUserAlbums } = useLastfm();
+    const { lastfmState, getUserArtists, getUserAlbums} = useLastfm();
     const [hasUserForSearchArtists, setHasUserForSearchArtists] = useState(false);
     // const [hasUserForSearchAlbums, setHasUserForSearchAlbums] = useState(false);
 
     useEffect(() => {
-        if (lastfmState.user.login) {
-            getUserArtists(lastfmState.user.login);
-            getUserAlbums(lastfmState.user.login);
+        if (lastfmState.user.artists) {
+            getUserArtists(lastfmState.user.artists);
+            getUserAlbums(lastfmState.user.artists);
         }
-        setHasUserForSearchArtists(lastfmState.artists); //descobrir o colocar ao invés de artists
+        setHasUserForSearchArtists(lastfmState.topartists); 
 
 
-    }, [lastfmState.user.login]);
+    }, [lastfmState]);
 
     return (
         <>
