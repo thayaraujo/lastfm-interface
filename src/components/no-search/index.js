@@ -4,7 +4,7 @@ import * as S from './styled';
 const NoSearch = () => {
   return (
     <S.Wrapper>
-      <h1>Nenhum usuário pesquisado</h1>
+      <h1>Digite um username do Last.fm para iniciar a pesquisa</h1>
     </S.Wrapper>
   );
 }

@@ -9,14 +9,13 @@ const Artists = () => {
     // const [hasUserForSearchAlbums, setHasUserForSearchAlbums] = useState(false);
 
     useEffect(() => {
-        if (lastfmState.user.artists) {
-            getUserArtists(lastfmState.user.artists);
-            getUserAlbums(lastfmState.user.artists);
+        if (lastfmState.user.name) {
+            getUserArtists(lastfmState.user.name);
+            getUserAlbums(lastfmState.user.name);
         }
-        setHasUserForSearchArtists(lastfmState.topartists); 
+        setHasUserForSearchArtists(lastfmState.artists); 
 
-
-    }, [lastfmState]);
+    }, [lastfmState.user.name]);
 
     return (
         <>
@@ -47,9 +46,10 @@ const Artists = () => {
                                     key={item.id}
                                     name={item.name}
                                     linkToItem={item.topalbums}
-                                    fullName={item.topalbums} //ver se coloca o get
+                                    fullName={item.topalbums} 
                                 />
                             ))}
+                            {console.log(lastfmState, 'alo')}
                         </S.WrapperList>
                     </S.WrapperTabPanel>
                 </S.WrapperTabs>

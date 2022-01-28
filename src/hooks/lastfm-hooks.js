@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { LastfmContext } from "../providers/lastfm-provider";
 
 const useLastfm = () => {
-    const { lastfmState, getUser, getUserImage, getUserArtists, getUserAlbums } = useContext(
+    const { lastfmState, getUser, getUserArtists, getUserAlbums, getLovedTracks } = useContext(
         LastfmContext
     );
 
-    return { lastfmState, getUser, getUserImage, getUserArtists, getUserAlbums };
+    return { lastfmState, getUser, getUserArtists, getUserAlbums, getLovedTracks };
 };
 
 export default useLastfm;

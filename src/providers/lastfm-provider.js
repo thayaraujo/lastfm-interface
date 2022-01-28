@@ -26,17 +26,7 @@ const LastfmProvider = ({ children }) => {
         albums: [],
     });
 
-    const getUserImage = (username) => {
-        api.get(`https://lastfm.freetls.fastly.net/i/u/${username}`)
-        .then(({ data }) => {
-            console.log("data: " + JSON.stringify(data));
-            setLastfmState((prevState) => ({
-                ...prevState,
-                image: data.image,
-            }));
-        });
-    };
-
+    
     const getUser = (username) => {
         setLastfmState((prevState) => ({
             ...prevState,
@@ -78,6 +68,7 @@ const LastfmProvider = ({ children }) => {
                 artists: data.topartists,
             }));
         });
+        console.log(getUserArtists, "get artistssss")
     };
 
     const getUserAlbums = (username) => {
@@ -91,13 +82,13 @@ const LastfmProvider = ({ children }) => {
             });
     };
 
+
     const contextValue = {
         lastfmState,
-        getUserImage: useCallback((username) => getUserImage(username), []),
         getUser: useCallback((username) => getUser(username), []),
         getUserArtists: useCallback((username) => getUserArtists(username), []),
         getUserAlbums: useCallback((username) => getUserAlbums(username), []),
-    }
+    };
 
     return (
         <LastfmContext.Provider value={contextValue}>

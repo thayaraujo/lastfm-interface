@@ -4,6 +4,7 @@ import Layout from './components/layout';
 import Profile from './components/profile';
 import useLastfm from './hooks/lastfm-hooks';
 import NoSearch from './components/no-search';
+import ArtistsItem from './components/artists-item';
 
 const App = () => {
   const { lastfmState } = useLastfm();
@@ -17,6 +18,7 @@ const App = () => {
             <>
               <Profile />
               <Artists />
+              <ArtistsItem />
             </>
           )}
           </>
