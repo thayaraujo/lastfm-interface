@@ -13,7 +13,7 @@ const Profile = () => {
                     <h1>{lastfmState.user.realname}</h1>
                     <S.WrapperUserGeneric>
                         <h3>Username: </h3>
-                        <a href={lastfmState.user.url}
+                        <a href={lastfmState.user.name}
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -35,10 +35,8 @@ const Profile = () => {
                         <span>{lastfmState.user.playcount}</span>
                     </div>
                     <div>
-
                         <h4>Loved Tracks</h4>
                         <span>{lastfmState.user.lovedTracks}</span>
-                        {console.log(lastfmState.user.lovedTracks, 'loved')}
                     </div>
                     <div>
                         <h4>Playlists</h4>

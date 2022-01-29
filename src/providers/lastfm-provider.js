@@ -13,8 +13,8 @@ const LastfmProvider = ({ children }) => {
         hasUser: false,
         loading: false,
         user: {
-            name: undefined,
-            realName: undefined,
+            name: "thaynara",
+            realname: 'thay',
             image: undefined,
             country: undefined,
             url: undefined,
@@ -23,10 +23,9 @@ const LastfmProvider = ({ children }) => {
             playlists: 0,
         },
         artists: [],
-        albums: [],
+        albums: []
     });
 
-    
     const getUser = (username) => {
         setLastfmState((prevState) => ({
             ...prevState,
@@ -34,40 +33,40 @@ const LastfmProvider = ({ children }) => {
         }));
 
         api.get(`https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${username}&api_key=affcb81955001a30878737181e4e7e35&format=json`)
-        .then(({ data }) => {
-            console.log("data: " + JSON.stringify(data));
-            setLastfmState((prevState) => ({
-                ...prevState,
-                hasUser: true,
-                user: {
-                    name: data.name,
-                    realName: data.realname,
-                    image: data.image,
-                    country: data.country,
-                    url: data.url,
-                    scrobbles: data.playcount,
-                    lovedTracks: data.lovedtracks,
-                    playlists: data.playlists,
-                },
-            }));
+            .then(({ data }) => {
+                console.log("data: " + JSON.stringify(data));
+                setLastfmState((prevState) => ({
+                    ...prevState,
+                    hasUser: true,
+                    user: {
+                        name: data.name,
+                        realname: data.realname,
+                        image: data.image,
+                        country: data.country,
+                        url: data.url,
+                        scrobbles: data.playcount,
+                        lovedTracks: data.lovedtracks,
+                        playlists: data.playlists,
+                    },
+                }));
 
-        }).finally(() => {
-            setLastfmState((prevState) => ({
-                ...prevState,
-                loading: !prevState.loading,
-            }));
-        })
+            }).finally(() => {
+                setLastfmState((prevState) => ({
+                    ...prevState,
+                    loading: !prevState.loading,
+                }));
+            })
     }
 
     const getUserArtists = (username) => {
         api.get(`https://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=${username}&api_key=affcb81955001a30878737181e4e7e35&format=json`)
-        .then(({ data }) => {
-            console.log("data: " + JSON.stringify(data));
-            setLastfmState((prevState) => ({
-                ...prevState,
-                artists: data.topartists,
-            }));
-        });
+            .then(({ data }) => {
+                console.log("data: " + JSON.stringify(data));
+                setLastfmState((prevState) => ({
+                    ...prevState,
+                    artists: data.topartists,
+                }));
+            });
         console.log(getUserArtists, "get artistssss")
     };
 

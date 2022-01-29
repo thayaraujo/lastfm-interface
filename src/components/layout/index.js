@@ -4,9 +4,6 @@ import Header from '../header';
 
 
 const Layout = ({ children }) => {
-    
-    
-
     return (
         <S.WrapperLayout>
             <Header />

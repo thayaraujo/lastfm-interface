@@ -6,7 +6,6 @@ import * as S from './styled';
 const Artists = () => {
     const { lastfmState, getUserArtists, getUserAlbums} = useLastfm();
     const [hasUserForSearchArtists, setHasUserForSearchArtists] = useState(false);
-    // const [hasUserForSearchAlbums, setHasUserForSearchAlbums] = useState(false);
 
     useEffect(() => {
         if (lastfmState.user.name) {
@@ -49,7 +48,6 @@ const Artists = () => {
                                     fullName={item.topalbums} 
                                 />
                             ))}
-                            {console.log(lastfmState, 'alo')}
                         </S.WrapperList>
                     </S.WrapperTabPanel>
                 </S.WrapperTabs>
